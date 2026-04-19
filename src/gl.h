@@ -29,7 +29,7 @@ typedef double GLclampd;
 typedef GL_DEBUG_CALLBACK(GlDebugCallback);
 
 // OpenGL function prototypes.
-#define X(ret, name, ...) typedef ret name##Proc(__VA_ARGS__); name##Proc * name ;
+#define X(ret, name, ...) typedef ret APIENTRY name##Proc(__VA_ARGS__); name##Proc * name ;
     GL_FUNCTIONS
 #undef X
 
