@@ -426,29 +426,7 @@ new_color_texture(int w, int h)
 }
 
 GLuint
-new_depth_stencil_texture(int w, int h)
-{
-    GLuint t = 0;
-    glGenTextures(1, &t);
-    glBindTexture(GL_TEXTURE_2D, t);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    //glTexParameteri(GL_TEXTURE_2D, GL_DEPTH_TEXTURE_MODE, GL_INTENSITY);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_R_TO_TEXTURE);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);
-    glTexImage2D(GL_TEXTURE_2D, /*level = */ 0, /*internal_format = */ GL_DEPTH24_STENCIL8,
-                 /*width, height = */ w,h,
-                 /*border = */ 0,
-                 /*format = */ GL_DEPTH_STENCIL, /*type = */ GL_UNSIGNED_INT_24_8,
-                 /*data = */ NULL);
-    glBindTexture(GL_TEXTURE_2D, 0);
-    return t;
-}
-
-GLuint
-new_fbo(GLuint color_attachment, GLuint depth_stencil_attachment, GLenum texture_target)
+new_fbo(GLuint color_attachment, GLenum texture_target)
 {
     GLuint fbo = 0;
     glGenFramebuffersEXT(1, &fbo);
@@ -457,10 +435,6 @@ new_fbo(GLuint color_attachment, GLuint depth_stencil_attachment, GLenum texture
 
     glFramebufferTexture2DEXT(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, texture_target,
                               color_attachment, 0);
-    if ( depth_stencil_attachment ) {
-        glFramebufferTexture2DEXT(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, texture_target,
-                                  depth_stencil_attachment, 0);
-    }
 
     glBindFramebufferEXT(GL_FRAMEBUFFER, 0);
     return fbo;
@@ -474,18 +448,6 @@ resize_color_texture(GLuint t, int w, int h)
                  /*width, height = */ w,h,
                  /*border = */ 0,
                  /*format = */ GL_RGBA, /*type = */ GL_UNSIGNED_BYTE,
-                 /*data = */ NULL);
-}
-
-
-void
-resize_depth_stencil_texture(GLuint t, int w, int h)
-{
-    glBindTexture(GL_TEXTURE_2D, t);
-    glTexImage2D(GL_TEXTURE_2D, /*level = */ 0, /*internal_format = */ GL_DEPTH24_STENCIL8,
-                 /*width, height = */ w,h,
-                 /*border = */ 0,
-                 /*format = */ GL_DEPTH_STENCIL, /*type = */ GL_UNSIGNED_INT_24_8,
                  /*data = */ NULL);
 }
 

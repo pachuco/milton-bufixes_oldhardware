@@ -52,8 +52,7 @@ bool    set_uniform_mat2 (GLuint program, char* name, f32* vals);
 void    vertex_attrib_v3f(GLuint program, char* name);
 
 GLuint  new_color_texture (int w, int h);
-GLuint  new_depth_stencil_texture (int w, int h);
-GLuint  new_fbo (GLuint color_attachment, GLuint depth_stencil_attachment=0, GLenum texture_target=GL_TEXTURE_2D);
+GLuint  new_fbo (GLuint color_attachment, GLenum texture_target=GL_TEXTURE_2D);
 
 void    resize_color_texture (GLuint t, int w, int h);
 void    resize_depth_stencil_texture (GLuint t, int w, int h);

@@ -116,7 +116,6 @@ struct RenderBackend
     GLuint canvas_texture;
     GLuint eraser_texture;
     GLuint helper_texture;  // Used for various effects..
-    GLuint stencil_texture;
     GLuint stroke_info_texture;
 
     GLuint fbo;
@@ -651,15 +650,10 @@ gpu_init(RenderBackend* r, CanvasView* view, ColorPicker* picker)
             print_framebuffer_status();
         }
 
-
-        glGenTextures(1, &r->stencil_texture);
-
-        r->stencil_texture = gl::new_depth_stencil_texture(view->screen_size.w, view->screen_size.h);
-
         // Create framebuffer object.
         GLenum texture_target;
         texture_target = GL_TEXTURE_2D;
-        r->fbo = gl::new_fbo(r->canvas_texture, r->stencil_texture, texture_target);
+        r->fbo = gl::new_fbo(r->canvas_texture, texture_target);
         glBindFramebufferEXT(GL_FRAMEBUFFER, r->fbo);
         print_framebuffer_status();
         glBindFramebufferEXT(GL_FRAMEBUFFER, 0);
@@ -683,7 +677,6 @@ gpu_resize(RenderBackend* r, CanvasView* view)
     gl::resize_color_texture(r->canvas_texture, r->width, r->height);
     gl::resize_color_texture(r->helper_texture, r->width, r->height);
     gl::resize_color_texture(r->stroke_info_texture, r->width, r->height);
-    gl::resize_depth_stencil_texture(r->stencil_texture, r->width, r->height);
 }
 
 void

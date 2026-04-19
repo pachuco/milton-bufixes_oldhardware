@@ -572,7 +572,7 @@ milton_main(bool is_fullscreen, char* file_to_open)
     milton_log("Creating Milton Window\n");
 
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+    //SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, gl_version_major);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, gl_version_minor);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, true);
