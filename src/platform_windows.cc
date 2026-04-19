@@ -264,7 +264,7 @@ platform_get_gl_proc(char* name)
         }
     }
     else {
-        milton_log("Loaded %s rom WGL\n", name);
+        milton_log("Loaded %s from WGL\n", name);
     }
     return func;
 }
