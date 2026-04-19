@@ -64,10 +64,10 @@
 
     // Use 3.2 on macos. OpenGL 3.2 is supported by all mac computers since macOS 10.8.5
     // https://developer.apple.com/opengl/OpenGL-Capabilities-Tables.pdf
-    #if defined(__MACH__)
-        #undef USE_GL_3_2
-        #define USE_GL_3_2 1
-    #endif
+//    #if defined(__MACH__)
+//        #undef USE_GL_3_2
+//        #define USE_GL_3_2 1
+//    #endif
 
 
 // Spawn threads to save the canvas.
@@ -83,8 +83,8 @@
     #undef WIN32_DEBUGGER_OUTPUT
     #define WIN32_DEBUGGER_OUTPUT 0
 
-    #undef USE_GL_3_2
-    #define USE_GL_3_2 0
+//    #undef USE_GL_3_2
+//    #define USE_GL_3_2 0
 
     #undef REDRAW_EVERY_FRAME
     #define REDRAW_EVERY_FRAME 0
