@@ -1,3 +1,5 @@
+@echo off
+
 if exist OUTPUT goto OUTPUT_EXISTS
 
 set builddir=build
@@ -7,8 +9,9 @@ mkdir OUTPUT
 copy %builddir%\Milton.exe OUTPUT\Milton.exe
 copy %builddir%\Milton.pdb OUTPUT\Milton.pdb
 copy Milton.iss OUTPUT\Milton.iss
-copy %sdlbindir%\SDL2.lib OUTPUT\SDL2.lib
-copy %sdlbindir%\SDL2.pdb OUTPUT\SDL2.pdb
+copy %builddir%\SDL2.lib OUTPUT\SDL2.lib
+copy %builddir%\SDL2.pdb OUTPUT\SDL2.pdb
+copy %builddir%\SDL2.dll OUTPUT\SDL2.dll
 copy milton_icon.ico OUTPUT\milton_icon.ico
 copy LICENSE.txt OUTPUT\LICENSE.txt
 copy %builddir%\Carlito.LICENSE OUTPUT\Carlito.LICENSE
@@ -16,6 +19,7 @@ copy %builddir%\Carlito.ttf OUTPUT\Carlito.ttf
 
 mkdir OUTPUT\Standalone
 copy OUTPUT\Milton.exe OUTPUT\Standalone\
+copy OUTPUT\SDL2.dll OUTPUT\Standalone\
 copy OUTPUT\milton_icon.ico OUTPUT\Standalone\
 copy OUTPUT\LICENSE.txt OUTPUT\Standalone\
 copy OUTPUT\Carlito.ttf OUTPUT\Standalone\
