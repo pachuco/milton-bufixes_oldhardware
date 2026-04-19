@@ -17,16 +17,16 @@
 #endif
 
 #define GL_FUNCTIONS_CORE \
-    X(GLenum,   glGetError, void)\
+    X(GLenum,   glGetError, void) \
     X(GLint,    glGetAttribLocation,      GLuint program, GLchar* name)                     \
     X(GLint,    glGetUniformLocation,     GLuint program, GLchar *name)                     \
-    X(const GLubyte *, glGetString, GLenum name )\
-    X(const GLubyte*, glGetStringi,       GLenum name, GLuint index)                              \
+    X(const GLubyte *, glGetString, GLenum name ) \
+    /*X(const GLubyte*, glGetStringi,       GLenum name, GLuint index)*/                             \
     X(void,     glBindFramebufferEXT,     GLenum target, GLuint framebuffer)                      \
     X(void,     glBindTexture,            GLenum target, GLuint text) \
     X(void,     glBufferData,             GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage) \
     X(void,     glCompileShader,          GLuint shader)                                          \
-    X(void,     glEnable, GLenum cap )\
+    X(void,     glEnable, GLenum cap ) \
     X(void,     glFramebufferTexture2DEXT, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level) \
     X(void,     glGenFramebuffersEXT,     GLsizei n, GLuint* framebuffers)                        \
     X(void,     glGenTextures,            GLsizei n, GLuint* textures) \
@@ -34,7 +34,7 @@
     X(GLboolean, glIsProgram,             GLuint program)                                         \
     X(GLboolean, glIsShader,              GLuint shader)                                          \
     X(GLuint,   glCreateShader,           GLenum type)                                            \
-    X(void,     glGetIntegerv, GLenum pname, GLint *params )\
+    X(void,     glGetIntegerv, GLenum pname, GLint *params ) \
     X(void,     glGetProgramInfoLog,      GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog) \
     X(void,     glGetProgramiv,           GLuint program, GLenum pname, GLint* params)            \
     X(void,     glGetShaderInfoLog,       GLuint shader, GLsizei bufSize, GLsizei* length, GLchar* source) \
@@ -62,32 +62,32 @@
     X(void,     glGenBuffers,             GLsizei n, GLuint *buffers)                             \
     X(void,     glGenVertexArrays,        GLsizei n, GLuint* arrays)                              \
     X(void,     glGetFloatv,              GLenum pname, GLfloat *data) \
-    X(GLboolean,glIsEnabled,              GLenum cap)\
+    X(GLboolean,glIsEnabled,              GLenum cap) \
     X(void,     glActiveTexture,          GLenum texture)                                         \
     X(void,     glBlendEquation,          GLenum mode)                                            \
     X(void,     glBlendEquationSeparate,  GLenum modeRGB, GLenum modeAlpha)                       \
     X(void,     glBlendFunc,              GLenum source, GLenum dest) \
-    X(void,     glBlitFramebufferEXT,     GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter) \
+    /*X(void,     glBlitFramebufferEXT,     GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)*/ \
     X(void,     glClear,                  GLbitfield mask) \
-    X(void,     glClearColor, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)\
+    X(void,     glClearColor, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha) \
     X(void,     glClearDepth,             GLclampd depth) \
-    X(void,     glCopyTexImage2D,         GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)\
+    /*X(void,     glCopyTexImage2D,         GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)*/ \
     X(void,     glDeleteBuffers,          GLsizei n, GLuint* buffers)                       \
     X(void,     glDeleteVertexArrays,     GLsizei n, GLuint* arrays)                        \
     X(void,     glDepthFunc,              GLenum func) \
     X(void,     glDisable,                GLenum cap) \
-    X(void,     glDrawArrays, GLenum mode, GLint first, GLsizei count)\
-    X(void,     glDrawElements,           GLenum mode, GLsizei count, GLenum type, const void *indices)\
+    X(void,     glDrawArrays, GLenum mode, GLint first, GLsizei count) \
+    X(void,     glDrawElements,           GLenum mode, GLsizei count, GLenum type, const void *indices) \
     X(void,     glEnableVertexAttribArray, GLuint index)                                          \
-    X(void,     glPixelStorei,            GLenum pname, GLint param)\
-    X(void,     glReadPixels,             GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void *pixels)\
+    X(void,     glPixelStorei,            GLenum pname, GLint param) \
+    X(void,     glReadPixels,             GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void *pixels) \
     X(void,     glScissor,                GLint x, GLint y, GLsizei width, GLsizei height) \
     X(void,     glUniformMatrix4fv,       GLint location, GLsizei count, GLboolean transpose, const GLfloat* value) \
     X(void,     glVertexAttribPointer,    GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLvoid *pointer) \
-    X(void,     glViewport,               GLint x, GLint y, GLsizei width, GLsizei height)\
+    X(void,     glViewport,               GLint x, GLint y, GLsizei width, GLsizei height) \
     X(void,     glDetachShader,           GLuint program, GLuint shader)                          \
     X(void,     glDeleteProgram,          GLuint program)                                         \
-    X(void,     glDeleteTextures,         GLsizei n, const GLuint *textures)\
+    X(void,     glDeleteTextures,         GLsizei n, const GLuint *textures) \
     X(void,     glDeleteShader,           GLuint shader)                                          \
     X(void, glPolygonMode,  GLenum face, GLenum mode) \
 
