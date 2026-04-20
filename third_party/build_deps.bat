@@ -29,14 +29,14 @@ if "%target%"=="x64" set outdir=x64
 
 echo "Milton build_deps.bat: Building target platform %outdir%"
 
-pushd SDL2-2.0.8\VisualC
+pushd SDL2-2.32.10\VisualC
 msbuild SDL\SDL.vcxproj /p:Configuration="Debug" /p:Platform=%outdir%
 popd
 
 echo Copying SDL2 lib and pdb files to bin\%target%\
-copy SDL2-2.0.8\VisualC\SDL\%outdir%\Debug\SDL2.lib bin\%target%\SDL2.lib
+copy SDL2-2.32.10\VisualC\SDL\%outdir%\Debug\SDL2.lib bin\%target%\SDL2.lib
 
 :: NOTE: For some reason the SDL project does not generate a PDB for 32 bit.
 :: Doesn't matter too much since dev is done in x64.
-if "%target%"=="x64" copy SDL2-2.0.8\VisualC\SDL\%outdir%\Debug\SDL2.pdb bin\%target%\SDL2.pdb
+if "%target%"=="x64" copy SDL2-2.32.10\VisualC\SDL\%outdir%\Debug\SDL2.pdb bin\%target%\SDL2.pdb
 

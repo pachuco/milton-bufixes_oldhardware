@@ -69,7 +69,7 @@ On 2021-02-27 a successful build for Linux can be done with these steps:
 
 While in the milton top directory
 ```
-cd third_party/SDL2-2.0.8
+cd third_party/SDL2-2.32.10
 mkdir build
 cd build
 cmake -DVIDEO_WAYLAND=OFF -DCMAKE_INSTALL_PREFIX=linux64 -DCMAKE_BUILD_TYPE=Debug ../
