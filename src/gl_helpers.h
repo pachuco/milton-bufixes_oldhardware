@@ -55,7 +55,6 @@ GLuint  new_color_texture (int w, int h);
 GLuint  new_fbo (GLuint color_attachment, GLenum texture_target=GL_TEXTURE_2D);
 
 void    resize_color_texture (GLuint t, int w, int h);
-void    resize_depth_stencil_texture (GLuint t, int w, int h);
 
 #if GRAPHICS_DEBUG
     #define PUSH_GRAPHICS_GROUP(groupName) glPushDebugGroup(GL_DEBUG_SOURCE_APPLICATION, 0, -1, groupName)
