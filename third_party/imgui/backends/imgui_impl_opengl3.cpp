@@ -359,14 +359,14 @@ bool    ImGui_ImplOpenGL3_Init(const char* glsl_version)
 #endif
 
     bd->UseBufferSubData = false;
-    /*
+
     // Query vendor to enable glBufferSubData kludge
 #ifdef _WIN32
     if (const char* vendor = (const char*)glGetString(GL_VENDOR))
         if (strncmp(vendor, "Intel", 5) == 0)
             bd->UseBufferSubData = true;
 #endif
-    */
+
 #endif
 
 #ifdef IMGUI_IMPL_OPENGL_DEBUG

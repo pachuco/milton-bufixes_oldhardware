@@ -754,6 +754,7 @@ milton_main(bool is_fullscreen, char* file_to_open)
 
     // ---- Main loop ----
 
+    static int force_initial_frames = 2;
     while ( !platform.should_quit ) {
         PROFILE_GRAPH_END(system);
         PROFILE_GRAPH_BEGIN(polling);
@@ -954,6 +955,13 @@ milton_main(bool is_fullscreen, char* file_to_open)
             //  milton_log("Sleeping at least %d ms\n", (u32)(to_sleep_us/1000));
             SDL_Delay((u32)(to_sleep_us/1000));
         }
+        
+        // TODO: ImGui kludge
+        if (force_initial_frames > 0) {
+            force_initial_frames--;
+            platform.force_next_frame = true;
+        }
+        
         #if REDRAW_EVERY_FRAME
         platform.force_next_frame = true;
         #endif
