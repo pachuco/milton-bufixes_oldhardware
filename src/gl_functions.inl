@@ -90,6 +90,11 @@
     X(void,     glDeleteTextures,         GLsizei n, const GLuint *textures) \
     X(void,     glDeleteShader,           GLuint shader)                                          \
     X(void, glPolygonMode,  GLenum face, GLenum mode) \
+    \
+    X(void, glTexSubImage2D, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels) \
+    X(void, glBlendFuncSeparate, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha) \
+    X(void, glBufferSubData, GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid* data) \
+
 
 #define GL_FUNCTIONS \
     GL_FUNCTIONS_GRAPHICS_DEBUG \

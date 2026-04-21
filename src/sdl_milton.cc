@@ -3,8 +3,8 @@
 
 #define IMGUI_IMPL_OPENGL_LOADER_CUSTOM "gl.h"
 #include <imgui.h>
-#include "imgui_impl_sdl.h"
-#include "imgui_impl_opengl3.h"
+#include "backends/imgui_impl_sdl2.h"
+#include "backends/imgui_impl_opengl3.h"
 
 #include "milton.h"
 #include "gl_helpers.h"
@@ -57,13 +57,7 @@ shortcut_handle_key(Milton* milton, PlatformState* platform, SDL_Event* event, M
     ImGuiIO& io = ImGui::GetIO();
 
     if (io.WantCaptureKeyboard) {
-        int key = event->key.keysym.scancode;
-        IM_ASSERT(key >= 0 && key < IM_ARRAYSIZE(io.KeysDown));
-        io.KeysDown[key] = (event->type == SDL_KEYDOWN);
-        io.KeyShift = ((SDL_GetModState() & KMOD_SHIFT) != 0);
-        io.KeyCtrl = ((SDL_GetModState() & KMOD_CTRL) != 0);
-        io.KeyAlt = ((SDL_GetModState() & KMOD_ALT) != 0);
-        io.KeySuper = ((SDL_GetModState() & KMOD_GUI) != 0);
+        ImGui_ImplSDL2_ProcessEvent(event);
     }
     else {
         MiltonBindings* bindings = &milton->settings->bindings;
@@ -766,8 +760,6 @@ milton_main(bool is_fullscreen, char* file_to_open)
 
         u64 frame_start_us = perf_counter();
 
-        ImGuiIO& imgui_io = ImGui::GetIO();
-
         MiltonInput milton_input = sdl_event_loop(milton, &platform);
 
         // Handle pen orientation to switch to eraser or pen.
@@ -881,7 +873,7 @@ milton_main(bool is_fullscreen, char* file_to_open)
         i32 input_flags = (i32)milton_input.flags;
 
         ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplSDL2_NewFrame(window);
+        ImGui_ImplSDL2_NewFrame();
         ImGui::NewFrame();
 
         // Avoid the case where we stop changing the brush size when we hover over GUI elements.
@@ -941,7 +933,6 @@ milton_main(bool is_fullscreen, char* file_to_open)
             platform.should_quit = true;
         }
         {
-            ImGuiIO& io = ImGui::GetIO(); (void)io;
             ImGui::Render();
             SDL_GL_MakeCurrent(window, gl_context);
             PUSH_GRAPHICS_GROUP("ImGui");
